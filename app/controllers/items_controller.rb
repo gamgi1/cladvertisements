@@ -41,6 +41,6 @@ class ItemsController < ApplicationController
     @item = @category.items.find_by(id: params[:id])
   end
   def item_params
-    params.require(:item).permit(:price, :contact, :city, :quality, :name_of_item, :description)
+    params.require(:item).permit(:price, :contact, :city, :quality, :name_of_item, :description, :avatar)
   end
 end
