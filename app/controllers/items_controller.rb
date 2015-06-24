@@ -5,11 +5,11 @@ class ItemsController < ApplicationController
     @items = @category.items
   end
   def new
-    @items = @category.items.build
+    @item = @category.items.build
   end
   def create
-    @items = @category.items.build(item_params)
-    if @items.save
+    @item = @category.items.build(item_params)
+    if @item.save
       redirect_to category_item_path(@category.id, @item.id)
     else
       flash[:error] = "Item unsuccessfully created"
@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
   end
   private
   def find_category
-    @category = Category.find_by(params[:id])
+    @category = Category.find(params[:category_id])
   end
   def find_item
     @item = @category.items.find_by(id: params[:id])
