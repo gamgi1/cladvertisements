@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :find_category, only:[:show, :edit, :update, :destroy]
+  before_action :find_category, only:[ :edit, :update, :destroy]
 
   def index
     @categories = Category.all
@@ -9,15 +9,12 @@ class CategoriesController < ApplicationController
     @category = Category.new
   end
 
-  def show
-  end
-
   def edit
   end
 
   def create
-    @category = Category.new
-    if @category.save(category_params)
+    @category = Category.new(category_params)
+    if @category.save
       redirect_to category_items_path(@category.id)
     else
       flash[:error] = 'Category unsuccessfully created'
@@ -38,6 +35,9 @@ class CategoriesController < ApplicationController
 
   def find_category
     @category = Category.find_by(id: params[:id] )
+    unless @category
+      render(text: 'Category not found', status: 404)
+    end
   end
 
   def category_params
