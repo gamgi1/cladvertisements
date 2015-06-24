@@ -5,6 +5,6 @@
 <% @categories.each do |category| %>
 <%= link_to category.category_name, category_items_path(category.id) %>
 <%= link_to 'Edit', edit_category_path(category.id) %>
-<%= link_to 'Delete' %>
+<%= link_to 'Delete', category_path(category.id), method: :delete %>
 <br>
 <% end %>
