@@ -1,1 +1,10 @@
-<h1>HI!!!</h1>
+<h1><%= @category.category_name %></h1>
+<%= link_to('New Item', new_category_item_path(@category.id)) %>
+<% @items.each do |i| %>
+<%= i.price %>
+<%= i.contact %>
+<%= i.city %>
+<%= i.quality %>
+<%= i.name_of_item %>
+<%= i.description %>
+<% end %>
