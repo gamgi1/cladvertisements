@@ -9,7 +9,7 @@
       <%= image_tag category.general_img.url(:medium) %>
       <div class="caption bottom-aligned-text">
         <h3><%= link_to(category.category_name, category_items_path(category.id)) %></h3>
-        <p><a href="<%= edit_category_path(category.id) %>" class="btn btn-primary" role="button">Edit</a> <a href="<%= category_path(category.id) %>" class="btn btn-default" role="button">Delete</a></p>
+        <p><a href="<%= edit_category_path(category.id) %>" class="btn btn-primary" role="button">Edit</a> <a href="<%= category_path(category.id) %>" data-method="delete" class="btn btn-default" role="button">Delete</a></p>
       </div>
     </div>
   </div>
