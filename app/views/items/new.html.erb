@@ -14,7 +14,7 @@
   </div>
   <div class="form-group">
     <%= f.label(:quality, class: 'form-label') %>
-    <%= f.text_field(:quality, class: 'form-control input-lg') %>
+    <%= f.select(:quality, options_for_select(['New', 'Acceptable', 'Poor', 'Damaged']),{},{class: 'form-control input-lg'}) %>
   </div>
   <div class="form-group">
     <%= f.label(:description, class: 'form-label') %>
