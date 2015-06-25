@@ -31,6 +31,12 @@ RSpec.describe ItemsController, type: :controller do
     it "creates an item" do
       post :create, category_id: @category.id, item: {name_of_item: 'Dog', price: 3.33, contact: 'Best Friend'}
       expect(response).to have_http_status(:redirect)
+      expect(flash[:notice]).to be_present
+    end
+    it "fails to create(validation name and price)" do
+      post :create, category_id: @category.id, item: {name_of_item: nil, price: 3434343434, contact: nil}
+      expect(response).to render_template(:new)
+      expect(flash[:error]).to be_present
     end
   end
 
@@ -45,6 +51,12 @@ RSpec.describe ItemsController, type: :controller do
     it "updates an item" do
       put :update, category_id: @category.id, id: item.id, item: {name_of_item: 'Pig', price: 22.22, contact: 'Babe'}
       expect(response).to have_http_status(:redirect)
+      expect(flash[:notice]).to be_present
+    end
+    it "fails to update(validation name and price)" do
+      put :update, category_id: @category.id, id: item.id, item: {name_of_item: nil, price: 11111111111}
+      expect(response).to render_template(:edit)
+      expect(flash[:error]).to be_present
     end
   end
 
