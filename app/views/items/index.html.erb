@@ -1,11 +1,16 @@
-<h1><%= @category.category_name %></h1>
-<%= link_to('New Item', new_category_item_path(@category.id)) %>
-<% @items.each do |i| %>
-<%= i.price %>
-<%= i.contact %>
-<%= i.city %>
-<%= i.quality %>
-<%= i.name_of_item %>
-<%= i.description %>
-<%= image_tag i.avatar.url(:thumb) %>
+<h1 class="page-header text-center"><%= @category.category_name %></h1>
+<a class="btn btn-lg btn-success pull-right" href="<%= new_category_item_path(@category.id) %>">
+  <span class="glyphicon glyphicon-plus"></span>
+</a>
+<p class="lead">The most popular classifides app on the web!</p>
+  <% @items.each do |i| %>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail category text-center">
+      <%= image_tag i.avatar.url(:medium) %>
+      <div class="caption bottom-aligned-text">
+        <h3></h3>
+        <p><a href="<%= category_item_path(@category.id, i.id) %>" class="btn btn-primary" role="button">Show</a> <a href="<%= categories_path %>" class="btn btn-default" role="button">Back</a></p>
+      </div>
+    </div>
+  </div>
 <% end %>
