@@ -1,3 +1,6 @@
+<% if flash[:notice] %>
+    <div class="alert alert-success" role="alert"><%= flash[:notice] %></div>
+<% end %>
 <h1 class="page-header text-center"><%= @category.category_name %></h1>
 <a class="btn btn-lg btn-success pull-right" href="<%= new_category_item_path(@category.id) %>">
   <span class="glyphicon glyphicon-plus"></span>

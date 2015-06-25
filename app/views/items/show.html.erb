@@ -1,3 +1,7 @@
+<% if flash[:notice] %>
+    <div class="alert alert-success" role="alert"><%= flash[:notice] %></div>
+<% end %>
+
 <div class="page-header">
   <h1><%= @item.name_of_item %> <small><%= @category.category_name %></small></h1>
 </div>
@@ -10,7 +14,7 @@
         <h3>Price: <%= @item.price %></h3>
         <h4>Quality: <%= @item.quality %></h4>
         <p>Description: <%= @item.description %></p>
-        <p><a href="<%= category_items_path(@category.id) %>" class="btn btn-primary" role="button">Back</a></p>
+        <p><a href="<%= category_items_path(@category.id) %>" class="btn btn-primary text-align: center" role="button">Back</a> <a href="<%= edit_category_item_path(@category.id, @item.id) %>" class="btn btn-primary" role="button">Edit</a></p>
       </div>
     </div>
   </div>

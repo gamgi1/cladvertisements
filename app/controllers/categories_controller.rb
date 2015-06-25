@@ -16,6 +16,7 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     if @category.save
       redirect_to category_items_path(@category.id)
+      flash[:notice] = "Success! Go ahead and add a couple of #{@category.category_name}"
     else
       flash[:error] = 'Category unsuccessfully created'
       render :new
