@@ -1,5 +1,5 @@
-<h1>Categories#new</h1>
-<p>Find me in app/views/categories/new.html.erb</p>
+<h1 class="page-header text-center">Add a Category</h1>
+<p class="lead">Didn't find your category? Add a new one!</p>
 
 <%= form_for(@category, html: {class: 'form'}) do |f| %>
 <div class="form-group">
@@ -13,3 +13,5 @@
   <%= f.submit('Add New Category', class: 'btn btn-lg btn-success') %>
 </div>
 <% end %>
+
+<p><a href="<%= categories_path %>" class="btn btn-primary" role="button">Back</a></p>
