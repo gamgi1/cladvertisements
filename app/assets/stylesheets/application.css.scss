@@ -15,3 +15,20 @@
  */
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body{
+  background-color: gray;
+}
+.container{
+  background-color: white;
+}
+
+.category{
+  height: 400px;
+}
+
+.bottom-aligned-text{
+  position: absolute;
+    bottom: 5px;
+    right: 125px;
+}
