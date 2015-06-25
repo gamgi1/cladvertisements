@@ -5,7 +5,7 @@ RSpec.describe ItemsController, type: :controller do
     @category = Category.create!(category_name: 'Pet')
   end
 
-  let(:item){Item.create!(name_of_item: 'Cat', price: 2.22, contact: 'Cat Lady')}
+  let(:item){FactoryGirl.create(:item, category: @category)}
 
   describe "GET #index" do
     it "returns http success" do
@@ -43,9 +43,6 @@ RSpec.describe ItemsController, type: :controller do
 
   describe "PUT #update" do
     it "updates an item" do
-      category_item = item
-      category_item.category_id = @category.id
-      category_item.save
       put :update, category_id: @category.id, id: item.id, item: {name_of_item: 'Pig', price: 22.22, contact: 'Babe'}
       expect(response).to have_http_status(:redirect)
     end
@@ -60,9 +57,6 @@ RSpec.describe ItemsController, type: :controller do
 
   describe "DELETE #destroy" do
     it "deletes an item" do
-      category_item = item
-      category_item.category_id = @category.id
-      category_item.save
       delete :destroy, category_id: @category.id, id: item.id
       expect(response).to have_http_status(:redirect)
     end
