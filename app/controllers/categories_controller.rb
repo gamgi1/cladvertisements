@@ -16,9 +16,9 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_params)
     if @category.save
       redirect_to category_items_path(@category.id)
-      flash[:notice] = "Success! Go ahead and add a couple of #{@category.category_name}"
+      # flash[:notice] = "Success! Go ahead and add a couple of #{@category.category_name}"
     else
-      flash[:error] = 'Category unsuccessfully created'
+      # flash[:error] = 'Category unsuccessfully created'
       render :new
     end
   end
@@ -41,7 +41,7 @@ class CategoriesController < ApplicationController
   def find_category
     @category = Category.find_by(id: params[:id] )
     unless @category
-      render(text: 'Category not found', status: 404)
+flash[:error] = 'Category not found'
     end
   end
 
